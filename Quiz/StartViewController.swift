@@ -44,6 +44,7 @@ class StartViewController: UIViewController {
         session = NinjaQuizSession(questionRepository: makeQuestionRepository())
         showSessionView(session!)
     }
+    
     @IBAction func challengeSessionClick(_ sender: Any) {
         session = ChallengeQuizSession(questionRepository: makeQuestionRepository())
         showSessionView(session!)
