@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(sessionTick), userInfo: nil, repeats: true)
+        showLiveScore()
         nextOne()
     }
 
@@ -37,6 +38,7 @@ class ViewController: UIViewController {
     }
 
     @objc func sessionTick() {
+        showLiveScore()
         if (session.tickAndShouldPassToNextQuestion()) {
             nextOne()
         }
@@ -52,10 +54,9 @@ class ViewController: UIViewController {
     }
 
     func nextOne() {
-        showLiveScore()
         hintLabel.isHidden = true
         hintButton.isHidden = false
-
+        showLiveScore()
         // get the next question from the session
         if let question = session.nextQuestion() {
             // Set the captions
@@ -77,7 +78,7 @@ class ViewController: UIViewController {
     }
     
     func showLiveScore() {
-        scoreLiveGame.text = "votre actuel: \(session!.score)"
+        scoreLiveGame.text = "votre score actuel: \(session!.score)"
     }
     
 }
