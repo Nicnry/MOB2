@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     @IBOutlet var answerButton2: UIButton!
     @IBOutlet var answerButton3: UIButton!
     @IBOutlet var timeLabel: UILabel!
+    @IBOutlet weak var scoreLiveGame: UILabel!
     
     var session : QuizSession!
     var sessionCompletion: (() -> Void)!
@@ -27,7 +28,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(sessionTick), userInfo: nil, repeats: true)
-        
         nextOne()
     }
 
@@ -52,6 +52,7 @@ class ViewController: UIViewController {
     }
 
     func nextOne() {
+        showScore()
         hintLabel.isHidden = true
         hintButton.isHidden = false
 
@@ -73,6 +74,10 @@ class ViewController: UIViewController {
     @IBAction func hintClick(_ sender: UIButton) {
         hintLabel.isHidden = false
         hintButton.isHidden = true
+    }
+    
+    func showScore() {
+        scoreLiveGame.text = "votre score: \(session!.score) / \(session!.questionsCount)"
     }
     
 }
