@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     }
 
     func nextOne() {
-        showScore()
+        showLiveScore()
         hintLabel.isHidden = true
         hintButton.isHidden = false
 
@@ -76,8 +76,8 @@ class ViewController: UIViewController {
         hintButton.isHidden = true
     }
     
-    func showScore() {
-        scoreLiveGame.text = "votre score: \(session!.score) / \(session!.questionsCount)"
+    func showLiveScore() {
+        scoreLiveGame.text = "votre actuel: \(session!.score)"
     }
     
 }
