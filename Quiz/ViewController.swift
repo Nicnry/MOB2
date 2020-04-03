@@ -38,7 +38,6 @@ class ViewController: UIViewController {
     }
 
     @objc func sessionTick() {
-        showLiveScore()
         if (session.tickAndShouldPassToNextQuestion()) {
             nextOne()
         }
@@ -51,12 +50,12 @@ class ViewController: UIViewController {
             // Pass to the next question
             nextOne()
         }
+        showLiveScore()
     }
 
     func nextOne() {
         hintLabel.isHidden = true
         hintButton.isHidden = false
-        showLiveScore()
         // get the next question from the session
         if let question = session.nextQuestion() {
             // Set the captions
