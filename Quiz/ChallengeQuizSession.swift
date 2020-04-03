@@ -31,7 +31,7 @@ class ChallengeQuizSession : QuizSession {
         } else {
             _score -= 1
             if (_score <= 0) {
-                self._totalQuestionCount = 12
+                _currentQuestionCount = 12
             }
         }
         return true
