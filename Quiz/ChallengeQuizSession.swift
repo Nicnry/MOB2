@@ -16,6 +16,9 @@ class ChallengeQuizSession : QuizSession {
     }
     
     override func nextQuestion() -> Question? {
+        if (_score <= 0 && _currentQuestionCount >= 1) {
+            return nil
+        }
         _currentQuestionCount += 1
         if _currentQuestionCount > _totalQuestionCount {
             return nil
@@ -26,14 +29,7 @@ class ChallengeQuizSession : QuizSession {
     
     override func checkAnswer(_ answer: String) -> Bool {
         let correct = super.checkAnswer(answer)
-        if (correct) {
-            _score += 1
-        } else {
-            _score -= 1
-            if (_score <= 0) {
-                _currentQuestionCount = 12
-            }
-        }
+        correct ? (_score += 1) : (_score -= 1)
         return true
     }
     
